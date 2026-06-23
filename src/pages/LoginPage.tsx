@@ -9,8 +9,8 @@ export default function LoginPage() {
     const from = (location.state as { from?: Location })?.from?.pathname || '/dashboard'
     const { signIn } = useAuth()
 
-    const [teamCode, setTeamCode] = useState('TEAM-001')
-    const [email, setEmail] = useState('operator@tuckersoft.com')
+    const [teamCode, setTeamCode] = useState(import.meta.env.VITE_DEV_TEAM_CODE ?? '')
+    const [email, setEmail] = useState(import.meta.env.VITE_DEV_EMAIL ?? '')
     const [password, setPassword] = useState('')
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)

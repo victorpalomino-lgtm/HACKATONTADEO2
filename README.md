@@ -77,3 +77,20 @@ Este es el frontend para la consola operativa de administración de criaturas di
    ```bash
    npm run lint
    ```
+
+## Variables de Entorno
+
+Copia `.env.example` como `.env.local` para desarrollo local y define la URL base del API provista por el docente. La URL debe incluir el prefijo `/api/v1`:
+
+```properties
+VITE_API_BASE_URL=https://<backend-url>/api/v1
+```
+
+Variables opcionales para precargar el formulario de login durante desarrollo:
+
+```properties
+VITE_DEV_TEAM_CODE=TEAM-055
+VITE_DEV_EMAIL=operator@tuckersoft.com
+```
+
+No agregues passwords como variables `VITE_`: Vite las expone en el bundle del navegador. En Vercel o Netlify, configura `VITE_API_BASE_URL` en las variables de entorno del proyecto antes de desplegar.
