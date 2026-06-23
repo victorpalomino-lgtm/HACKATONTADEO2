@@ -55,7 +55,7 @@ export default function DashboardPage() {
 
     return (
         <div className="space-y-8">
-            {/* Resumen de Indicadores */}
+            { }
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
                 <SummaryCard title="Tropeles totales" value={summary.totalTropels} />
                 <SummaryCard title="Tropeles críticos" value={summary.criticalTropels} />
@@ -63,7 +63,7 @@ export default function DashboardPage() {
                 <SummaryCard title="Estabilidad sectorial" value={`${summary.sectorStabilityAvg}%`} />
             </div>
 
-            {/* Grilla de Señales por Severidad */}
+            { }
             <section className="rounded-3xl border border-slate-800 bg-slate-900/90 p-6 shadow-xl shadow-slate-950/10">
                 <h2 className="text-xl font-semibold text-slate-100">Señales por severidad</h2>
                 <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
@@ -76,7 +76,7 @@ export default function DashboardPage() {
                 </div>
             </section>
 
-            {/* Listado de Sectores (Resumen de Sectores para View Transitions) */}
+            { }
             <section className="space-y-6">
                 <div className="flex items-center justify-between">
                     <h2 className="text-xl font-semibold text-slate-100">Sectores Operativos</h2>
@@ -85,8 +85,8 @@ export default function DashboardPage() {
 
                 <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
                     {sectors.map((sector) => (
-                        <div 
-                            key={sector.id} 
+                        <div
+                            key={sector.id}
                             className="view-transition-sector-card rounded-3xl border border-slate-800 bg-slate-900/90 p-6 shadow-xl shadow-slate-950/10 flex flex-col justify-between"
                         >
                             <div>
@@ -107,10 +107,9 @@ export default function DashboardPage() {
                                             <span>{sector.currentLoad} / {sector.capacity}</span>
                                         </div>
                                         <div className="h-1.5 w-full bg-slate-950 rounded-full overflow-hidden">
-                                            <div 
-                                                className={`h-full rounded-full ${
-                                                    (sector.currentLoad / sector.capacity) > 0.85 ? 'bg-rose-500' : 'bg-emerald-500'
-                                                }`}
+                                            <div
+                                                className={`h-full rounded-full ${(sector.currentLoad / sector.capacity) > 0.85 ? 'bg-rose-500' : 'bg-emerald-500'
+                                                    }`}
                                                 style={{ width: `${(sector.currentLoad / sector.capacity) * 100}%` }}
                                             />
                                         </div>
@@ -120,18 +119,17 @@ export default function DashboardPage() {
                                         <div className="flex items-center justify-between text-xs text-slate-400 mb-1">
                                             <span>Estabilidad</span>
                                             <span className={
-                                                sector.stabilityLevel < 50 ? 'text-rose-400' : 
-                                                sector.stabilityLevel < 75 ? 'text-amber-400' : 'text-emerald-400'
+                                                sector.stabilityLevel < 50 ? 'text-rose-400' :
+                                                    sector.stabilityLevel < 75 ? 'text-amber-400' : 'text-emerald-400'
                                             }>
                                                 {sector.stabilityLevel}%
                                             </span>
                                         </div>
                                         <div className="h-1.5 w-full bg-slate-950 rounded-full overflow-hidden">
-                                            <div 
-                                                className={`h-full rounded-full ${
-                                                    sector.stabilityLevel < 50 ? 'bg-rose-500' : 
-                                                    sector.stabilityLevel < 75 ? 'bg-amber-500' : 'bg-emerald-500'
-                                                }`}
+                                            <div
+                                                className={`h-full rounded-full ${sector.stabilityLevel < 50 ? 'bg-rose-500' :
+                                                        sector.stabilityLevel < 75 ? 'bg-amber-500' : 'bg-emerald-500'
+                                                    }`}
                                                 style={{ width: `${sector.stabilityLevel}%` }}
                                             />
                                         </div>
@@ -140,8 +138,8 @@ export default function DashboardPage() {
                             </div>
 
                             <div className="mt-6">
-                                <Link 
-                                    to={`/sectors/${sector.id}/story`} 
+                                <Link
+                                    to={`/sectors/${sector.id}/story`}
                                     viewTransition
                                     className="block w-full text-center rounded-2xl bg-slate-800 border border-slate-700/80 px-4 py-2.5 text-sm font-semibold text-slate-200 hover:bg-slate-750 hover:text-white transition duration-200"
                                 >

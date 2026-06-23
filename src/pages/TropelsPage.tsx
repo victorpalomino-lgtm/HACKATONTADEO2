@@ -44,7 +44,6 @@ export default function TropelsPage() {
     const vitalState = searchParams.get('vitalState') ?? ''
     const sectorId = searchParams.get('sectorId') ?? ''
 
-    // Fetch Sectors for filter dropdown
     useEffect(() => {
         api.get<{ items: SectorSummary[] }>('/sectors')
             .then((res) => {
@@ -74,7 +73,7 @@ export default function TropelsPage() {
         setError(null)
 
         api
-            .get<TropelPage>('/tropels', { 
+            .get<TropelPage>('/tropels', {
                 params: query,
                 signal: controller.signal
             })
@@ -119,8 +118,8 @@ export default function TropelsPage() {
                         <h1 className="text-2xl font-semibold text-slate-100">Atlas de Tropeles</h1>
                         <p className="mt-2 text-sm text-slate-400">Explora, ordena y filtra tus criaturas digitales en tiempo real con la URL sincronizada.</p>
                     </div>
-                    
-                    {/* Filtros */}
+
+                    { }
                     <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6">
                         <label className="block text-sm text-slate-200">
                             Buscar
@@ -131,7 +130,7 @@ export default function TropelsPage() {
                                 className="mt-2 w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
                             />
                         </label>
-                        
+
                         <label className="block text-sm text-slate-200">
                             Especie
                             <select

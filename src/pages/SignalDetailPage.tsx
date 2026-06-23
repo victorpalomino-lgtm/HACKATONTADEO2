@@ -57,12 +57,11 @@ export default function SignalDetailPage() {
             setSignal(response.data)
             setSuccess(true)
 
-            // Update status in signals feed cache in sessionStorage so it is reflected when going back
             const cachedItemsRaw = sessionStorage.getItem('signals_feed_items')
             if (cachedItemsRaw) {
                 try {
                     const cachedItems = JSON.parse(cachedItemsRaw) as SignalSummary[]
-                    const updatedItems = cachedItems.map((item) => 
+                    const updatedItems = cachedItems.map((item) =>
                         item.id === response.data.id ? { ...item, status: response.data.status } : item
                     )
                     sessionStorage.setItem('signals_feed_items', JSON.stringify(updatedItems))
@@ -122,7 +121,7 @@ export default function SignalDetailPage() {
 
                     <div className="space-y-4 rounded-3xl border border-slate-800 bg-slate-950/90 p-6">
                         <p className="text-sm text-slate-400 font-medium">Atender Señal</p>
-                        
+
                         <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
                             <select
                                 value={status}
@@ -141,7 +140,7 @@ export default function SignalDetailPage() {
                                     </option>
                                 ))}
                             </select>
-                            
+
                             <button
                                 type="button"
                                 onClick={handleSave}
@@ -161,7 +160,7 @@ export default function SignalDetailPage() {
                         {saveError && (
                             <div className="rounded-2xl bg-rose-500/10 border border-rose-500/20 p-4 text-sm text-rose-400 flex flex-col gap-2">
                                 <span>✗ {saveError}</span>
-                                <button 
+                                <button
                                     onClick={handleSave}
                                     className="self-start text-xs font-semibold text-rose-300 underline hover:text-rose-200 transition"
                                 >

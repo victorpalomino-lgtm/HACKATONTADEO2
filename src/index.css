@@ -25,7 +25,6 @@ textarea {
     font: inherit;
 }
 
-/* --- Checkpoint 5: Scroll-driven Animations --- */
 .story-card {
     view-timeline-name: --card-timeline;
     view-timeline-axis: block;
@@ -46,6 +45,7 @@ textarea {
         transform: scale(0.96) translateY(20px);
         filter: blur(4px);
     }
+
     to {
         opacity: 1;
         transform: scale(1) translateY(0);
@@ -53,7 +53,6 @@ textarea {
     }
 }
 
-/* --- Support for prefers-reduced-motion --- */
 @media (prefers-reduced-motion: reduce) {
     .story-card {
         animation: none !important;
@@ -61,13 +60,15 @@ textarea {
         transform: none !important;
         filter: none !important;
     }
-    .duration-300, .duration-500, .transition-all {
+
+    .duration-300,
+    .duration-500,
+    .transition-all {
         transition-duration: 0ms !important;
         transition: none !important;
     }
 }
 
-/* --- Checkpoint 5: View Transition Names --- */
 .view-transition-sector-header {
     view-transition-name: sector-header;
 }

@@ -157,18 +157,17 @@ export default function SectorStoryPage() {
                 <aside className="xl:sticky xl:top-24 h-fit space-y-6 rounded-3xl border border-slate-800 bg-slate-900/90 p-6 shadow-xl shadow-slate-950/10">
                     <h2 className="text-xl font-semibold text-slate-100">Visual del sector</h2>
                     <p className="text-sm text-slate-400">La escena cambia según la etapa activa.</p>
-                    
-                    {/* Visual box representing the asset and color code */}
-                    <div 
+
+                    { }
+                    <div
                         className="mt-6 rounded-3xl border border-slate-800 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 p-6 text-slate-100 transition-all duration-500"
                         style={{
-                            borderLeft: `8px solid ${
-                                data.stages[activeIndex].colorToken === 'emerald' ? '#10b981' :
-                                data.stages[activeIndex].colorToken === 'rose' ? '#f43f5e' :
-                                data.stages[activeIndex].colorToken === 'amber' ? '#f59e0b' :
-                                data.stages[activeIndex].colorToken === 'blue' ? '#3b82f6' :
-                                data.stages[activeIndex].colorToken === 'purple' ? '#8b5cf6' : '#64748b'
-                            }`
+                            borderLeft: `8px solid ${data.stages[activeIndex].colorToken === 'emerald' ? '#10b981' :
+                                    data.stages[activeIndex].colorToken === 'rose' ? '#f43f5e' :
+                                        data.stages[activeIndex].colorToken === 'amber' ? '#f59e0b' :
+                                            data.stages[activeIndex].colorToken === 'blue' ? '#3b82f6' :
+                                                data.stages[activeIndex].colorToken === 'purple' ? '#8b5cf6' : '#64748b'
+                                }`
                         }}
                     >
                         <p className="text-sm uppercase tracking-[0.24em] text-slate-400">Escena Activa</p>
@@ -182,7 +181,7 @@ export default function SectorStoryPage() {
                             </span>
                         </div>
                     </div>
-                    
+
                     <nav className="grid gap-3">
                         {data.stages.map((stage, index) => (
                             <button
@@ -190,8 +189,8 @@ export default function SectorStoryPage() {
                                 type="button"
                                 onClick={() => handleTransition(() => setActiveIndex(index))}
                                 className={`w-full rounded-2xl border px-4 py-3 text-left text-sm transition duration-200 outline-none focus:ring-2 focus:ring-emerald-500/50 ${index === activeIndex
-                                        ? 'border-emerald-500 bg-emerald-500/10 text-emerald-100'
-                                        : 'border-slate-800 bg-slate-950 text-slate-300 hover:border-slate-700 hover:bg-slate-900'
+                                    ? 'border-emerald-500 bg-emerald-500/10 text-emerald-100'
+                                    : 'border-slate-800 bg-slate-950 text-slate-300 hover:border-slate-700 hover:bg-slate-900'
                                     }`}
                             >
                                 <span className="font-semibold">Etapa {index + 1}</span>

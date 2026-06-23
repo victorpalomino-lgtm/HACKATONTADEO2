@@ -8,7 +8,6 @@ const DEFAULT_LIMIT = 15
 export default function SignalsFeedPage() {
     const [searchParams, setSearchParams] = useSearchParams()
 
-    // Cache logic for preserving scroll position and items
     const cacheKey = searchParams.toString()
     const cachedKey = sessionStorage.getItem('signals_feed_cache_key')
     const hasCache = cachedKey === cacheKey
@@ -46,12 +45,12 @@ export default function SignalsFeedPage() {
     const [hasMore, setHasMore] = useState(initialHasMore)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
-    
+
     const [signalType, setSignalType] = useState(searchParams.get('signalType') ?? '')
     const [severity, setSeverity] = useState(searchParams.get('severity') ?? '')
     const [status, setStatus] = useState(searchParams.get('status') ?? '')
     const [query, setQuery] = useState(searchParams.get('q') ?? '')
-    
+
     const controllerRef = useRef<AbortController | null>(null)
     const loadingRef = useRef(false)
     const observerRef = useRef<IntersectionObserver | null>(null)
@@ -70,7 +69,6 @@ export default function SignalsFeedPage() {
         [query, severity, signalType, status],
     )
 
-    // Sync state filters to search params
     useEffect(() => {
         const params = new URLSearchParams()
         if (signalType) params.set('signalType', signalType)
@@ -80,7 +78,6 @@ export default function SignalsFeedPage() {
         setSearchParams(params)
     }, [query, severity, signalType, status, setSearchParams])
 
-    // Save cache to sessionStorage whenever items or filters change
     useEffect(() => {
         sessionStorage.setItem('signals_feed_cache_key', searchParams.toString())
         sessionStorage.setItem('signals_feed_items', JSON.stringify(items))
@@ -88,7 +85,6 @@ export default function SignalsFeedPage() {
         sessionStorage.setItem('signals_feed_has_more', String(hasMore))
     }, [items, nextCursor, hasMore, searchParams])
 
-    // Listen to scroll to save position
     useEffect(() => {
         const handleScroll = () => {
             sessionStorage.setItem('signals_feed_scroll_pos', String(window.scrollY))
@@ -99,7 +95,6 @@ export default function SignalsFeedPage() {
         }
     }, [])
 
-    // Restore scroll position once items are loaded
     useEffect(() => {
         if (items.length > 0 && !didScrollRestore) {
             const savedPos = sessionStorage.getItem('signals_feed_scroll_pos')
@@ -161,12 +156,11 @@ export default function SignalsFeedPage() {
         setNextCursor(null)
         setHasMore(true)
         setError(null)
-        setDidScrollRestore(true) // Don't try restoring scroll for fresh filters
+        setDidScrollRestore(true)
         sessionStorage.removeItem('signals_feed_scroll_pos')
         fetchPage(null)
     }, [filters, fetchPage])
 
-    // Load first page on filter changes (excluding restore from cache)
     useEffect(() => {
         if (didRestore.current) {
             didRestore.current = false
@@ -175,7 +169,6 @@ export default function SignalsFeedPage() {
         loadFirstPage()
     }, [loadFirstPage])
 
-    // IntersectionObserver for infinite scrolling
     useEffect(() => {
         if (!sentinelRef.current) return
         observerRef.current?.disconnect()
