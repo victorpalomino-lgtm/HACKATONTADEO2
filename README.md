@@ -10,7 +10,7 @@ Este es el frontend para la consola operativa de administración de criaturas di
 
 ## Despliegue
 
-* **Link del Deploy:** `[Insertar Link de Vercel/Netlify/etc.]`
+* **Link del Deploy:** pendiente de publicar en Vercel/Netlify.
 
 ---
 
@@ -70,6 +70,12 @@ Este es el frontend para la consola operativa de administración de criaturas di
 
    ```bash
    npm run build
+   ```
+
+5. **Revisar estilo y errores estáticos:**
+
+   ```bash
+   npm run lint
    ```
 
 ## Variables de Entorno Requeridas

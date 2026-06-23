@@ -1,7 +1,6 @@
 import { FormEvent, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { login } from '../lib/auth'
-import { AuthUser } from '../types/api'
 import { useAuth } from '../App'
 
 export default function LoginPage() {
@@ -25,7 +24,7 @@ export default function LoginPage() {
             const response = await login({ teamCode, email, password })
             signIn(response.token, response.user)
             navigate(from, { replace: true })
-        } catch (err) {
+        } catch {
             setError('Error en el login. Verifica tus credenciales y vuelve a intentar.')
         } finally {
             setLoading(false)

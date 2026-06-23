@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { api } from '../lib/api'
-import type { Tropel, TropelPage, SectorSummary } from '../types/api'
+import type { TropelPage, SectorSummary } from '../types/api'
 
 const SORT_OPTIONS = [
     { value: 'updatedAt,desc', label: 'Actualizados' },

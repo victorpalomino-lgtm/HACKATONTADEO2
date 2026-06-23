@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { api } from '../lib/api'
-import type { SectorStoryResponse, SectorStoryStage } from '../types/api'
+import type { SectorStoryResponse } from '../types/api'
 
 const supportsViewTransition = typeof document !== 'undefined' && 'startViewTransition' in document
 

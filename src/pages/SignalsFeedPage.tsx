@@ -159,7 +159,7 @@ export default function SignalsFeedPage() {
         setDidScrollRestore(true)
         sessionStorage.removeItem('signals_feed_scroll_pos')
         fetchPage(null)
-    }, [filters, fetchPage])
+    }, [fetchPage])
 
     useEffect(() => {
         if (didRestore.current) {
